@@ -25,7 +25,7 @@ python load_fixture.py
 ```shell
 export FLASK_APP=run.py
 export FLASK_ENV='development'
-flask run
+flask run --port=5000
 ```
 
 ### CMD (Windows)

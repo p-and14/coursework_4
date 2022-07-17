@@ -10,9 +10,14 @@ class BaseConfig:
     SECRET_KEY = os.getenv('SECRET_KEY', 'you-will-never-guess')
     JSON_AS_ASCII = False
 
+    PORT = 25000
+
     ITEMS_PER_PAGE = 12
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    JWT_SECRET = 's3cR$eT'
+    JWT_ALGORITHM = 'HS256'
 
     TOKEN_EXPIRE_MINUTES = 15
     TOKEN_EXPIRE_DAYS = 130

@@ -24,9 +24,9 @@ class Movie(models.Base):
     trailer = Column(String(255), nullable=False)
     year = Column(Integer, nullable=False)
     rating = Column(Float, nullable=False)
-    genre_id = Column(Integer, ForeignKey("genres.id"), nullable=False)
+    genre_id = Column(Integer, ForeignKey(Genre.id), nullable=False)
     genre = relationship("Genre")
-    director_id = Column(Integer, ForeignKey("directors.id"), nullable=False)
+    director_id = Column(Integer, ForeignKey(Director.id), nullable=False)
     director = relationship("Director")
 
 
@@ -37,4 +37,14 @@ class User(models.Base):
     password = Column(String(200), nullable=False)
     name = Column(String(100))
     surname = Column(String(100))
-    favorite_genre = Column(String(100))
+    favorite_genre = Column(Integer, ForeignKey(Genre.id))
+    f_genre = relationship("Genre")
+
+
+class FavoriteMovie(models.Base):
+    __tablename__ = 'favorite_user_movies'
+
+    user_id = Column(Integer, ForeignKey(User.id))
+    user = relationship("User")
+    movie_id = Column(Integer, ForeignKey(Movie.id))
+    movie = relationship("Movie")
